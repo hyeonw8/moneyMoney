@@ -105,7 +105,7 @@ const Detail = () => {
       <StDetailWrapper>
         <StDetailTitle>상세 내역 페이지</StDetailTitle>
         {filterTargetData.map((item) => (
-          <StDetailForm key={item.id}>
+          <StDetailForm key={item.id} onSubmit={() => updateData(params.id)}>
             <StFormDBox>
               <StFormDLabel htmlFor="date">날짜</StFormDLabel>
               <StFormDInput
@@ -142,12 +142,10 @@ const Detail = () => {
                 id="desc"
               />
             </StFormDBox>
-
             <StButtonDiv>
               <StBtn
-                type="sumbit"
-                $text="update"
-                onClick={() => updateData(params.id)}
+                type="submit"
+                $text="update"  
               >
                 수정
               </StBtn>
