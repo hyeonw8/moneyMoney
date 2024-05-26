@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import uuid4 from 'uuid4';
+import { DataContext } from '../shared/DataContext';
 
 const StForm = styled.form`
   height: 70px;
@@ -42,7 +43,9 @@ const StFormInput = styled.input`
   width: 150px;
 `;
 
-const MoneyForm = ({ setData, data, setFilteredData, selectedMonth, filterData }) => {
+const MoneyForm = ({ filterData }) => {
+  const {  setData, data, selectedMonth, setFilteredData } = useContext(DataContext);
+
   const [date, setDate] = useState('');
   const [category, setCategory] = useState('');
   const [cost, setCost] = useState('');
