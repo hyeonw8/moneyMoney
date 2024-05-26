@@ -14,8 +14,8 @@ const StMonthList = styled.div`
   margin: 0 15px 10px 15px;
 `
 
-const MonthList = ({ monthArr, setSelectedMonth, selectedMonth, activeIndex, setActiveIndex }) => {
-
+const MonthList = ({ monthArr }) => {
+  
   return (
     <>
       <StMonthList> 
@@ -24,10 +24,7 @@ const MonthList = ({ monthArr, setSelectedMonth, selectedMonth, activeIndex, set
             <MonthButton 
             key={month}
             month={month}
-            setSelectedMonth={setSelectedMonth} 
-            selectedMonth={selectedMonth} 
-            activeIndex={activeIndex} 
-            setActiveIndex={setActiveIndex}/>
+            />
           ))
         }
       </StMonthList>

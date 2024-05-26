@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
+import { DataContext } from '../../shared/DataContext';
 
 const StButton = styled.button`
   height: 65px;
@@ -16,8 +17,8 @@ const StButton = styled.button`
 
 `;
 
-const MonthButton = ({ month, setSelectedMonth, selectedMonth, activeIndex, setActiveIndex }) => {
-
+const MonthButton = ({ month }) => {
+  const { setSelectedMonth, selectedMonth, activeIndex, setActiveIndex } = useContext(DataContext);
   const onClickHandler = (month) => {
     //const filteredData = [...data].filter((item) => item.date ===  );
     setActiveIndex(month);
