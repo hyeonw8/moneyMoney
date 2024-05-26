@@ -3,14 +3,15 @@ import Layout from '../shared/Layout';
 import Home from "../pages/Home";
 import Detail from "../pages/Detail";
 
-const Router = ({data, setData}) => {
-  
+
+const Router = () => {
+
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home data={data} setData={setData}/>}/>
-          <Route path="/detail/:id" element={<Detail data={data} setData={setData}/>}/>
+          <Route path="/" element={<Home />}/>
+          <Route path="/detail/:id" element={<Detail />}/>
         </Routes>
       </Layout>
     </BrowserRouter>
