@@ -1,9 +1,9 @@
 import MoneyContainer from '../components/MoneyContainer';
 
-const Home = ({ data, setData}) => {
+const Home = () => {
   return (
     <div>
-      <MoneyContainer data={data} setData={setData} />
+      <MoneyContainer />
     </div>
   );
 };

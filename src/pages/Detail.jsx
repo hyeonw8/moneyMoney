@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { DataContext } from '../shared/DataContext';
 
 const StDetailWrapper = styled.div`
   width: 100vw;
@@ -63,14 +64,11 @@ const StBtn = styled.button`
   height: 40px;
 `;
 
-const Detail = ({ data, setData }) => {
+const Detail = () => {
+  const { data, setData } = useContext(DataContext);
   const navigate = useNavigate();
   const params = useParams();
-  //const { id, date, category, cost, description } = data;
-  //console.log(typeof(params.id));
-  // const [targetData, setTargetData] = useState(null);
-  //console.log(targetData);
-  //console.log(data)
+
   const dateRef = useRef(null);
   const categoryRef = useRef(null);
   const costRef = useRef(null);
