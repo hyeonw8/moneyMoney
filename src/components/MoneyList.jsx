@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import MoneyItem from './MoneyItem';
+import { useContext } from 'react';
+import { DataContext } from '../shared/DataContext';
 
 const StMoneyList = styled.div`
   height: 100%;
@@ -23,7 +25,9 @@ const StNotMoneyList = styled.div`
   font-weight: 500;
 `
 
-const MoneyList = ({ setData, filteredData }) => {
+const MoneyList = () => {
+  const { filteredData } = useContext(DataContext);
+
   if (filteredData.length === 0) {
     return (
       <StNotMoneyList>
@@ -36,7 +40,7 @@ const MoneyList = ({ setData, filteredData }) => {
   return (
     <StMoneyList>
       {filteredData.map((data) => (
-        <MoneyItem key={data.id} data={data} setData={setData} />
+        <MoneyItem key={data.id} data={data} />
       ))}
     </StMoneyList>
   );
