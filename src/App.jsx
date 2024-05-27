@@ -1,11 +1,9 @@
-
 import './App.css';
 import Router from './shared/Router';
 import Globalstyle from './shared/Globalstyle';
-import { DataProvider } from './shared/DataContext';
+import { DataProvider } from './context/DataContext';
 
 function App() {
-  
   return (
     <>
       <DataProvider>
@@ -13,7 +11,6 @@ function App() {
         <Router />
       </DataProvider>
     </>
-    
   );
 }
 

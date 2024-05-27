@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import MoneyItem from './MoneyItem';
 import { useContext } from 'react';
-import { DataContext } from '../shared/DataContext';
+import { DataContext } from '../context/DataContext';
 
 const StMoneyList = styled.div`
   height: 100%;
@@ -17,13 +17,13 @@ const StNotMoneyList = styled.div`
   height: 100%;
   background-color: #fff;
   margin: 30px 15px 10px 15px;
-  border-radius: 20px;  
+  border-radius: 20px;
   padding: 20px;
   font-size: 20px;
   text-align: center;
   line-height: 30px;
   font-weight: 500;
-`
+`;
 
 const MoneyList = () => {
   const { filteredData } = useContext(DataContext);

@@ -3,7 +3,7 @@ import MoneyList from './MoneyList';
 import styled from 'styled-components';
 import MonthList from './Calendar/MonthList';
 import { useContext, useEffect } from 'react';
-import { DataContext } from '../shared/DataContext';
+import { DataContext } from '../context/DataContext';
 
 const StWrapper = styled.div`
   width: 100vw;
@@ -16,7 +16,20 @@ const StWrapper = styled.div`
 
 const MoneyContainer = () => {
   const { data, selectedMonth, setFilteredData } = useContext(DataContext);
-  const monthArr = ['1','2','3','4','5','6','7','8','9','10','11','12',];
+  const monthArr = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+  ];
 
   const filterData = (data, selectedMonth) => {
     return data.filter((fdata) => {
@@ -31,12 +44,8 @@ const MoneyContainer = () => {
 
   return (
     <StWrapper>
-      <MoneyForm 
-        filterData={filterData}
-      />
-      <MonthList
-        monthArr={monthArr}
-      />
+      <MoneyForm filterData={filterData} />
+      <MonthList monthArr={monthArr} />
       <MoneyList />
     </StWrapper>
   );

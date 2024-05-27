@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useContext, useState } from 'react';
 import uuid4 from 'uuid4';
-import { DataContext } from '../shared/DataContext';
+import { DataContext } from '../context/DataContext';
 
 const StForm = styled.form`
   height: 70px;
@@ -44,7 +44,8 @@ const StFormInput = styled.input`
 `;
 
 const MoneyForm = ({ filterData }) => {
-  const {  setData, data, selectedMonth, setFilteredData } = useContext(DataContext);
+  const { setData, data, selectedMonth, setFilteredData } =
+    useContext(DataContext);
 
   const [date, setDate] = useState('');
   const [category, setCategory] = useState('');
@@ -59,25 +60,25 @@ const MoneyForm = ({ filterData }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    
-    if(!date || !category.trim() || !cost.trim() || !description.trim()) {
+
+    if (!date || !category.trim() || !cost.trim() || !description.trim()) {
       return alert('모든 항목을 입력해 주세요!');
     }
 
     const nextData = {
-      id : uuid4(),
+      id: uuid4(),
       date,
       category,
-      cost : Number(cost),
+      cost: Number(cost),
       description,
-    }
+    };
 
     addData(nextData);
     setDate('');
     setCategory('');
     setCost('');
     setDescription('');
-  }
+  };
 
   return (
     <StForm onSubmit={onSubmitHandler}>
@@ -89,7 +90,7 @@ const MoneyForm = ({ filterData }) => {
           onChange={(e) => {
             setDate(e.target.value);
           }}
-          id='date'
+          id="date"
         />
       </StFormBox>
       <StFormBox>
@@ -101,7 +102,7 @@ const MoneyForm = ({ filterData }) => {
           onChange={(e) => {
             setCategory(e.target.value);
           }}
-          id='category'
+          id="category"
         />
       </StFormBox>
       <StFormBox>
@@ -113,7 +114,7 @@ const MoneyForm = ({ filterData }) => {
           onChange={(e) => {
             setCost(e.target.value);
           }}
-          id='cost'
+          id="cost"
         />
       </StFormBox>
       <StFormBox>
@@ -125,7 +126,7 @@ const MoneyForm = ({ filterData }) => {
           onChange={(e) => {
             setDescription(e.target.value);
           }}
-          id='desc'
+          id="desc"
         />
       </StFormBox>
       <StFormButton type="submit">저장</StFormButton>

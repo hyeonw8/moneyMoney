@@ -1,7 +1,7 @@
 import { useContext, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
-import { DataContext } from '../shared/DataContext';
+import { DataContext } from '../context/DataContext';
 
 const StDetailWrapper = styled.div`
   width: 100vw;
@@ -143,10 +143,7 @@ const Detail = () => {
               />
             </StFormDBox>
             <StButtonDiv>
-              <StBtn
-                type="submit"
-                $text="update"  
-              >
+              <StBtn type="submit" $text="update">
                 수정
               </StBtn>
               <StBtn
