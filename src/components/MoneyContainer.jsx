@@ -3,7 +3,7 @@ import MoneyList from './MoneyList';
 import styled from 'styled-components';
 import MonthList from './Calendar/MonthList';
 import { useContext, useEffect } from 'react';
-import { DataContext } from '../shared/DataContext';
+import { DataContext } from '../context/DataContext';
 
 const StWrapper = styled.div`
   width: 100vw;

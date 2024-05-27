@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import MoneyItem from './MoneyItem';
 import { useContext } from 'react';
-import { DataContext } from '../shared/DataContext';
+import { DataContext } from '../context/DataContext';
 
 const StMoneyList = styled.div`
   height: 100%;

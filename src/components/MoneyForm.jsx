@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useContext, useState } from 'react';
 import uuid4 from 'uuid4';
-import { DataContext } from '../shared/DataContext';
+import { DataContext } from '../context/DataContext';
 
 const StForm = styled.form`
   height: 70px;

@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { DataContext } from '../../shared/DataContext';
+import { DataContext } from '../../context/DataContext';
 
 const StButton = styled.button`
   height: 65px;
