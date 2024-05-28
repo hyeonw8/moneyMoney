@@ -8,14 +8,19 @@ const HeaderDiv = styled.div`
   height: 50px;
   padding: 10px;
   margin: 0 auto;
+  width: 100vw;
+  max-width: 1200px;
+  min-width: 780px;
 `;
 const HeaderTitle = styled.h2`
   font-size: 20px;
   font-weight: bold;
+  padding: 20px;
 `;
 const HeaderP = styled.p`
   font-size: 15px;
   font-weight: bold;
+  padding: 20px;
 `;
 
 const Header = () => {
