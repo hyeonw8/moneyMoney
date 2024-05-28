@@ -33,6 +33,13 @@ const MoneyList = () => {
     return Number(spliceMonth) === selectedMonth;
   });
 
+  const sortedData = filterData.sort((data1, data2) => {
+    if (new Date(data2.date) - new Date(data1.date) === 0) {
+      return Number(data2.cost) - Number(data1.cost) 
+    }
+    return new Date(data2.date) - new Date(data1.date);
+  });
+
   if (!filterData || filterData.length === 0) {
     return (
       <StNotMoneyList>
@@ -44,7 +51,7 @@ const MoneyList = () => {
 
   return (
     <StMoneyList>
-      {filterData.map((data) => (
+      {sortedData.map((data) => (
         <MoneyItem key={data.id} data={data} />
       ))}
     </StMoneyList>
