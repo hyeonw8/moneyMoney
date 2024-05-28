@@ -80,11 +80,13 @@ const Detail = () => {
   const filterTargetData = data.filter((item) => item.id === params.id);
 
   const handleDeleteData = (id) => {
-    alert('삭제되었습니다.');
+    if(confirm('정말로 이 지출 항목을 삭제하시겠습니까?')) {
+      alert('삭제되었습니다.');
 
-    dispatch(deleteData(id));
+      dispatch(deleteData(id));
 
-    navigate('/'); // 저장 후 다시 홈으로
+      navigate('/'); // 저장 후 다시 홈으로
+    } 
   };
 
   const handleUpdateData = (id) => {
