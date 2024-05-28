@@ -36,8 +36,8 @@ const MonthButton = ({ month }) => {
   return (
     <>
       <StButton
-        $active={selectedMonth === Number(month)}
-        onClick={() => onClickHandler(Number(month))}
+        $active={selectedMonth === month}
+        onClick={() => onClickHandler(month)}
       >
         {month}월
       </StButton>

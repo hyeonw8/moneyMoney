@@ -24,7 +24,7 @@ const StFormBox = styled.div`
 `;
 
 const StFormLabel = styled.label`
-  font-weight: bold;
+  font-weight: 600;
 `;
 
 const StFormButton = styled.button`
@@ -34,6 +34,7 @@ const StFormButton = styled.button`
   color: white;
   font-size: 17px;
   border-radius: 20px;
+  font-weight: 500;
 `;
 
 const StFormInput = styled.input`
@@ -72,6 +73,7 @@ const MoneyForm = () => {
     setCategory('');
     setCost('');
     setDescription('');
+
   };
 
   return (

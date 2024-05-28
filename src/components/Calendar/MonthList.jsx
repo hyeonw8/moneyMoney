@@ -15,20 +15,7 @@ const StMonthList = styled.div`
 `
 
 const MonthList = () => {
-  const monthArr = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    '11',
-    '12',
-  ];
+  const monthArr = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ];
 
   return (
     <>
@@ -36,14 +23,13 @@ const MonthList = () => {
         {
           monthArr.map(month => (
             <MonthButton 
-            key={month}
-            month={month}
+              key={month}
+              month={month}
             />
           ))
         }
       </StMonthList>
     </>
-    
   )
 }
 

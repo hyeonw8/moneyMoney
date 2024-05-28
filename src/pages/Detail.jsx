@@ -78,7 +78,6 @@ const Detail = () => {
   const descriptionRef = useRef(null);
 
   const filterTargetData = data.filter((item) => item.id === params.id);
-  console.log(filterTargetData);
 
   const handleDeleteData = (id) => {
     alert('삭제되었습니다.');
@@ -95,7 +94,7 @@ const Detail = () => {
       id,
       date: dateRef.current.value,
       category: categoryRef.current.value,
-      cost: parseInt(costRef.current.value, 10),
+      cost: Number(costRef.current.value),
       description: descriptionRef.current.value,
     };
 

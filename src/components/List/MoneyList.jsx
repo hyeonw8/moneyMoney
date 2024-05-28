@@ -17,7 +17,7 @@ const StNotMoneyList = styled.div`
   background-color: #fff;
   margin: 30px 15px 10px 15px;
   border-radius: 20px;
-  padding: 20px;
+  padding: 39px;
   font-size: 20px;
   text-align: center;
   line-height: 30px;
@@ -28,19 +28,19 @@ const MoneyList = () => {
   const datas = useSelector((state) => state.datas.data);
   const selectedMonth = useSelector((state) => state.datas.selectedMonth);
 
-  const filterData = datas.filter((data) => {
+  const filteredData = datas.filter((data) => {
     const spliceMonth = data.date.slice(5, 7);
     return Number(spliceMonth) === selectedMonth;
   });
 
-  const sortedData = filterData.sort((data1, data2) => {
+  const sortedData = filteredData.sort((data1, data2) => {
     if (new Date(data2.date) - new Date(data1.date) === 0) {
       return Number(data2.cost) - Number(data1.cost) 
     }
     return new Date(data2.date) - new Date(data1.date);
   });
 
-  if (!filterData || filterData.length === 0) {
+  if (filteredData.length === 0) {
     return (
       <StNotMoneyList>
         <h2> 해당 월에는 지출 내역이 없습니다! </h2>
