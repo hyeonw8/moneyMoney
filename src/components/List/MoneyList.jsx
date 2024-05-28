@@ -29,11 +29,11 @@ const MoneyList = () => {
   const selectedMonth = useSelector((state) => state.datas.selectedMonth);
 
   const filterData = datas.filter((data) => {
-      const spliceMonth = data.date.slice(5, 7);
-      return Number(spliceMonth) === selectedMonth;
+    const spliceMonth = data.date.slice(5, 7);
+    return Number(spliceMonth) === selectedMonth;
   });
-  
-  if ((!filterData || filterData.length === 0)) {
+
+  if (!filterData || filterData.length === 0) {
     return (
       <StNotMoneyList>
         <h2> 해당 월에는 지출 내역이 없습니다! </h2>

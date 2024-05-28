@@ -1,5 +1,5 @@
 import MoneyForm from '../components/MoneyForm';
-import MoneyList from './MoneyList';
+import MoneyList from './List/MoneyList';
 import styled from 'styled-components';
 import MonthList from './Calendar/MonthList';
 
@@ -13,7 +13,6 @@ const StWrapper = styled.div`
 `;
 
 const MoneyContainer = () => {
-
   return (
     <StWrapper>
       <MoneyForm />
