@@ -12,22 +12,26 @@ const getSelectedMonth = () => {
 const initialState = {
   data: moneyData,
   selectedMonth: getSelectedMonth(),
-  filteredData: [],
+  // filteredData: [],
 }
 
 const datasSlice = createSlice({
   name: 'datas',
   initialState,
   reducers: {
-    setData: (state, action) => {
-      state.data = action.payload;
-    },
+    // setData: (state, action) => {
+    //   state.data = action.payload;
+    // },
     setSelectedMonth: (state, action) => {
       state.selectedMonth = action.payload;
       localStorage.setItem('month', JSON.stringify(action.payload));
     },
-    setFilteredData: (state, action) => {
-      state.filteredData = action.payload;
+    // setFilteredData: (state, action) => {
+    //   state.filteredData = action.payload;
+    // },
+    addData: (state, action) => {
+      // 받아오는 거 새로운 데이터(지출 내역)
+      state.data.push(action.payload);
     },
     deleteData: (state, action) => {
       const id = action.payload;
@@ -40,5 +44,5 @@ const datasSlice = createSlice({
   }
 })
 
-export const { setData, setSelectedMonth, setActiveIndex, setFilteredData, deleteData, updateData } = datasSlice.actions;
+export const { setSelectedMonth, addData, deleteData, updateData } = datasSlice.actions;
 export default datasSlice.reducer;
