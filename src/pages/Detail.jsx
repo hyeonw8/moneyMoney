@@ -1,7 +1,9 @@
-import { useContext, useRef } from 'react';
+import { useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
-import { DataContext } from '../context/DataContext';
+// import { DataContext } from '../context/DataContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteData, updateData } from '../redux/slices/datasSlice';
 
 const StDetailWrapper = styled.div`
   width: 100vw;
@@ -65,7 +67,11 @@ const StBtn = styled.button`
 `;
 
 const Detail = () => {
-  const { data, setData } = useContext(DataContext);
+  //  const { data, setData } = useContext(DataContext);
+  const data = useSelector((state) => state.datas.data);
+  console.log(data);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const params = useParams();
 
@@ -75,16 +81,18 @@ const Detail = () => {
   const descriptionRef = useRef(null);
 
   const filterTargetData = data.filter((item) => item.id === params.id);
+  console.log(filterTargetData);
 
-  const deleteData = (id) => {
+  const handleDeleteData = (id) => {
     alert('삭제되었습니다.');
 
-    setData(data.filter((item) => item.id !== id));
+    //  dispatch(setData(data.filter((item) => item.id !== id)));
+    dispatch(deleteData(id));
 
     navigate('/'); // 저장 후 다시 홈으로
   };
 
-  const updateData = (id) => {
+  const handleUpdateData = (id) => {
     alert('수정되었습니다.');
 
     const updatedItem = {
@@ -95,7 +103,8 @@ const Detail = () => {
       description: descriptionRef.current.value,
     };
 
-    setData(data.map((item) => (item.id === id ? updatedItem : item)));
+    // dispatch(updateData(data.map((item) => (item.id === id ? updatedItem : item))));
+    dispatch(updateData({ id, updatedItem }));
 
     navigate('/');
   };
@@ -105,7 +114,10 @@ const Detail = () => {
       <StDetailWrapper>
         <StDetailTitle>상세 내역 페이지</StDetailTitle>
         {filterTargetData.map((item) => (
-          <StDetailForm key={item.id} onSubmit={() => updateData(params.id)}>
+          <StDetailForm
+            key={item.id}
+            onSubmit={() => handleUpdateData(params.id)}
+          >
             <StFormDBox>
               <StFormDLabel htmlFor="date">날짜</StFormDLabel>
               <StFormDInput
@@ -149,7 +161,7 @@ const Detail = () => {
               <StBtn
                 type="button"
                 $text="delete"
-                onClick={() => deleteData(params.id)}
+                onClick={() => handleDeleteData(params.id)}
               >
                 삭제
               </StBtn>

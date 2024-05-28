@@ -1,7 +1,10 @@
 import styled from 'styled-components';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import uuid4 from 'uuid4';
-import { DataContext } from '../context/DataContext';
+//port { DataContext } from '../context/DataContext';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { addData } from '../redux/slices/datasSlice';
 
 const StForm = styled.form`
   height: 70px;
@@ -43,20 +46,23 @@ const StFormInput = styled.input`
   width: 150px;
 `;
 
-const MoneyForm = ({ filterData }) => {
-  const { setData, data, selectedMonth, setFilteredData } =
-    useContext(DataContext);
+const MoneyForm = () => {
+  // const { setData, data, selectedMonth, setFilteredData } =
+  //   useContext(DataContext);
+  const data = useSelector((state) => state.datas.data);
+ // const selectedMonth = useSelector((state) => state.datas.selectedMonth);
+  const dispatch = useDispatch();
 
   const [date, setDate] = useState('');
   const [category, setCategory] = useState('');
   const [cost, setCost] = useState('');
   const [description, setDescription] = useState('');
 
-  const addData = (nextData) => {
-    const updatedData = [...data, nextData];
-    setData(updatedData);
-    setFilteredData(filterData(updatedData, selectedMonth));
-  };
+  // const addData = (nextData) => {
+  //   const updatedData = [...data, nextData];
+  //   dispatch(setData(updatedData));
+  //   // dispatch(setFilteredData(filterData(updatedData, selectedMonth)));
+  // };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -73,7 +79,7 @@ const MoneyForm = ({ filterData }) => {
       description,
     };
 
-    addData(nextData);
+    dispatch(addData(nextData));
     setDate('');
     setCategory('');
     setCost('');

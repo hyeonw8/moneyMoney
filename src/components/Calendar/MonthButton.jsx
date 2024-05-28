@@ -1,6 +1,9 @@
-import { useContext, useEffect } from 'react';
+import {  useEffect } from 'react';
 import styled from 'styled-components';
-import { DataContext } from '../../context/DataContext';
+//import { DataContext } from '../../context/DataContext';
+import { useDispatch } from 'react-redux';
+import { setSelectedMonth } from '/src/redux/slices/datasSlice'
+import { useSelector } from 'react-redux';
 
 const StButton = styled.button`
   height: 65px;
@@ -17,13 +20,15 @@ const StButton = styled.button`
 `;
 
 const MonthButton = ({ month }) => {
-  const { setSelectedMonth, selectedMonth, activeIndex, setActiveIndex } =
-    useContext(DataContext);
+  // const { setSelectedMonth, selectedMonth, activeIndex, setActiveIndex } =
+  //   useContext(DataContext);
+  //const activeIndex = useSelector((state) => state.datas.activeIndex);
+  const selectedMonth = useSelector((state) => state.datas.selectedMonth);
+  const dispatch = useDispatch();
+
   const onClickHandler = (month) => {
-    //const filteredData = [...data].filter((item) => item.date ===  );
-    setActiveIndex(month);
-    //console.log(filteredData);
-    setSelectedMonth(month);
+    //dispatch(setActiveIndex(month));
+    dispatch(setSelectedMonth(month));
   };
 
   // 선택 월 로컬 스토리지 저장
@@ -36,7 +41,7 @@ const MonthButton = ({ month }) => {
   return (
     <>
       <StButton
-        $active={activeIndex === Number(month)}
+        $active={selectedMonth === Number(month)}
         onClick={() => onClickHandler(Number(month))}
       >
         {month}월

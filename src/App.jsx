@@ -1,15 +1,18 @@
 import './App.css';
 import Router from './shared/Router';
 import Globalstyle from './shared/Globalstyle';
-import { DataProvider } from './context/DataContext';
+//import { DataProvider } from './context/DataContext';
+import store from './redux/config/configStore';
+import { Provider } from 'react-redux';
 
 function App() {
+
   return (
     <>
-      <DataProvider>
+      <Provider store={store}>
         <Globalstyle />
         <Router />
-      </DataProvider>
+      </Provider>
     </>
   );
 }

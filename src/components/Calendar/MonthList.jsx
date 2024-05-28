@@ -14,8 +14,22 @@ const StMonthList = styled.div`
   margin: 0 15px 10px 15px;
 `
 
-const MonthList = ({ monthArr }) => {
-  
+const MonthList = () => {
+  const monthArr = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+  ];
+
   return (
     <>
       <StMonthList> 

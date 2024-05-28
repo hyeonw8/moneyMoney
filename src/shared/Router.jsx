@@ -3,7 +3,6 @@ import Layout from '../shared/Layout';
 import Home from "../pages/Home";
 import Detail from "../pages/Detail";
 
-
 const Router = () => {
 
   return (
