@@ -1,6 +1,5 @@
 import {  useEffect } from 'react';
 import styled from 'styled-components';
-//import { DataContext } from '../../context/DataContext';
 import { useDispatch } from 'react-redux';
 import { setSelectedMonth } from '/src/redux/slices/datasSlice'
 import { useSelector } from 'react-redux';
@@ -20,14 +19,10 @@ const StButton = styled.button`
 `;
 
 const MonthButton = ({ month }) => {
-  // const { setSelectedMonth, selectedMonth, activeIndex, setActiveIndex } =
-  //   useContext(DataContext);
-  //const activeIndex = useSelector((state) => state.datas.activeIndex);
   const selectedMonth = useSelector((state) => state.datas.selectedMonth);
   const dispatch = useDispatch();
 
   const onClickHandler = (month) => {
-    //dispatch(setActiveIndex(month));
     dispatch(setSelectedMonth(month));
   };
 
