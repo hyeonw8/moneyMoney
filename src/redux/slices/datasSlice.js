@@ -15,7 +15,7 @@ const initialState = {
   filteredData: [],
 }
 
-const dataSlice = createSlice({
+const datasSlice = createSlice({
   name: 'datas',
   initialState,
   reducers: {
@@ -40,5 +40,5 @@ const dataSlice = createSlice({
   }
 })
 
-export const { setData, setSelectedMonth, setActiveIndex, setFilteredData, deleteData, updateData } = dataSlice.actions;
-export default dataSlice.reducer;
+export const { setData, setSelectedMonth, setActiveIndex, setFilteredData, deleteData, updateData } = datasSlice.actions;
+export default datasSlice.reducer;
