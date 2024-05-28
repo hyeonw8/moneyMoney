@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import uuid4 from 'uuid4';
-//port { DataContext } from '../context/DataContext';
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
 import { addData } from '../redux/slices/datasSlice';
 
 const StForm = styled.form`
@@ -47,22 +45,12 @@ const StFormInput = styled.input`
 `;
 
 const MoneyForm = () => {
-  // const { setData, data, selectedMonth, setFilteredData } =
-  //   useContext(DataContext);
-  const data = useSelector((state) => state.datas.data);
- // const selectedMonth = useSelector((state) => state.datas.selectedMonth);
   const dispatch = useDispatch();
 
   const [date, setDate] = useState('');
   const [category, setCategory] = useState('');
   const [cost, setCost] = useState('');
   const [description, setDescription] = useState('');
-
-  // const addData = (nextData) => {
-  //   const updatedData = [...data, nextData];
-  //   dispatch(setData(updatedData));
-  //   // dispatch(setFilteredData(filterData(updatedData, selectedMonth)));
-  // };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();

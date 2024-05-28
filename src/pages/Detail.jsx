@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
-// import { DataContext } from '../context/DataContext';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteData, updateData } from '../redux/slices/datasSlice';
 
@@ -67,9 +66,7 @@ const StBtn = styled.button`
 `;
 
 const Detail = () => {
-  //  const { data, setData } = useContext(DataContext);
   const data = useSelector((state) => state.datas.data);
-  console.log(data);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -86,7 +83,6 @@ const Detail = () => {
   const handleDeleteData = (id) => {
     alert('삭제되었습니다.');
 
-    //  dispatch(setData(data.filter((item) => item.id !== id)));
     dispatch(deleteData(id));
 
     navigate('/'); // 저장 후 다시 홈으로
@@ -103,7 +99,6 @@ const Detail = () => {
       description: descriptionRef.current.value,
     };
 
-    // dispatch(updateData(data.map((item) => (item.id === id ? updatedItem : item))));
     dispatch(updateData({ id, updatedItem }));
 
     navigate('/');
