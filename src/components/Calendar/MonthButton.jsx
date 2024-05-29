@@ -18,29 +18,47 @@ const StButton = styled.button`
   font-weight: 900;
 `;
 
-const MonthButton = ({ month }) => {
+const MonthButton = () => {
   const selectedMonth = useSelector((state) => state.datas.selectedMonth);
   const dispatch = useDispatch();
 
+  const monthArr = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ];
+
   const onClickHandler = (month) => {
-    dispatch(setSelectedMonth(month));
+    if (month !== selectedMonth) {
+     // console.log('Dispatching setSelectedMonth', month); // setSelectedMonth 확인
+      dispatch(setSelectedMonth(month));
+    }
   };
+
+  useEffect(() => {
+    if (selectedMonth !== null) {
+    //  console.log('useEffect - selectedMonth changed:', selectedMonth); // 저장 확인
+      localStorage.setItem('month', JSON.stringify(selectedMonth));
+    }
+  }, [selectedMonth]);
 
   // 선택 월 로컬 스토리지 저장
   useEffect(() => {
     if (selectedMonth !== null) {
       localStorage.setItem('month', JSON.stringify(selectedMonth));
+      console.log(selectedMonth)
     }
   }, [selectedMonth]);
 
   return (
     <>
-      <StButton
-        $active={selectedMonth === month}
-        onClick={() => onClickHandler(month)}
-      >
-        {month}월
-      </StButton>
+      {
+        monthArr.map(month => (
+          <StButton
+            key={month}
+            $active={selectedMonth === month}
+            onClick={() => onClickHandler(month)}
+          >
+          {month}월
+          </StButton>
+        ))
+      }
     </>
   );
 };
