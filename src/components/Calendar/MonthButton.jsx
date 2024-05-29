@@ -26,23 +26,15 @@ const MonthButton = () => {
 
   const onClickHandler = (month) => {
     if (month !== selectedMonth) {
-     // console.log('Dispatching setSelectedMonth', month); // setSelectedMonth 확인
       dispatch(setSelectedMonth(month));
     }
   };
-
-  useEffect(() => {
-    if (selectedMonth !== null) {
-    //  console.log('useEffect - selectedMonth changed:', selectedMonth); // 저장 확인
-      localStorage.setItem('month', JSON.stringify(selectedMonth));
-    }
-  }, [selectedMonth]);
 
   // 선택 월 로컬 스토리지 저장
   useEffect(() => {
     if (selectedMonth !== null) {
       localStorage.setItem('month', JSON.stringify(selectedMonth));
-      console.log(selectedMonth)
+
     }
   }, [selectedMonth]);
 
