@@ -78,7 +78,6 @@ const Detail = () => {
   const descriptionRef = useRef(null);
 
   const targetData = data.find((item) => item.id === params.id );
-  console.log(targetData)
 
   const handleDeleteData = (id) => {
     if(confirm('정말로 이 지출 항목을 삭제하시겠습니까?')) {
