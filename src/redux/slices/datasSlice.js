@@ -16,7 +16,6 @@ const datasSlice = createSlice({
   reducers: {
     setSelectedMonth: (state, action) => {
       state.selectedMonth = action.payload;
-      localStorage.setItem('month', JSON.stringify(action.payload));
     },
     addData: (state, action) => {
       state.data.push(action.payload);
