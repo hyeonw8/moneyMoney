@@ -77,7 +77,10 @@ const Detail = () => {
   const costRef = useRef(null);
   const descriptionRef = useRef(null);
 
-  const filterTargetData = data.filter((item) => item.id === params.id);
+  // const filterTargetData = data.filter((item) => item.id === params.id);
+  // console.log(filterTargetData)
+  const targetData = data.find((item) => item.id === params.id );
+  console.log(targetData)
 
   const handleDeleteData = (id) => {
     if(confirm('정말로 이 지출 항목을 삭제하시겠습니까?')) {
@@ -109,64 +112,63 @@ const Detail = () => {
     <div>
       <StDetailWrapper>
         <StDetailTitle>상세 내역 페이지</StDetailTitle>
-        {filterTargetData.map((item) => (
+        {
           <StDetailForm
-            key={item.id}
-            onSubmit={() => handleUpdateData(params.id)}
-          >
-            <StFormDBox>
-              <StFormDLabel htmlFor="date">날짜</StFormDLabel>
-              <StFormDInput
-                type="date"
-                defaultValue={item.date}
-                ref={dateRef}
-                id="date"
-              />
-            </StFormDBox>
-            <StFormDBox>
-              <StFormDLabel htmlFor="category">항목</StFormDLabel>
-              <StFormDInput
-                type="text"
-                defaultValue={item.category}
-                ref={categoryRef}
-                id="category"
-              />
-            </StFormDBox>
-            <StFormDBox>
-              <StFormDLabel htmlFor="cost">금액</StFormDLabel>
-              <StFormDInput
-                type="number"
-                defaultValue={item.cost}
-                ref={costRef}
-                id="cost"
-              />
-            </StFormDBox>
-            <StFormDBox>
-              <StFormDLabel htmlFor="desc">내용</StFormDLabel>
-              <StFormDInput
-                type="text"
-                defaultValue={item.description}
-                ref={descriptionRef}
-                id="desc"
-              />
-            </StFormDBox>
-            <StButtonDiv>
-              <StBtn type="submit" $text="update">
-                수정
-              </StBtn>
-              <StBtn
-                type="button"
-                $text="delete"
-                onClick={() => handleDeleteData(params.id)}
-              >
-                삭제
-              </StBtn>
-              <StBtn type="button" $text="gohome" onClick={() => navigate('/')}>
-                뒤로가기
-              </StBtn>
-            </StButtonDiv>
-          </StDetailForm>
-        ))}
+          onSubmit={() => handleUpdateData(params.id)}
+        >
+          <StFormDBox>
+            <StFormDLabel htmlFor="date">날짜</StFormDLabel>
+            <StFormDInput
+              type="date"
+              defaultValue={targetData.date}
+              ref={dateRef}
+              id="date"
+            />
+          </StFormDBox>
+          <StFormDBox>
+            <StFormDLabel htmlFor="category">항목</StFormDLabel>
+            <StFormDInput
+              type="text"
+              defaultValue={targetData.category}
+              ref={categoryRef}
+              id="category"
+            />
+          </StFormDBox>
+          <StFormDBox>
+            <StFormDLabel htmlFor="cost">금액</StFormDLabel>
+            <StFormDInput
+              type="number"
+              defaultValue={targetData.cost}
+              ref={costRef}
+              id="cost"
+            />
+          </StFormDBox>
+          <StFormDBox>
+            <StFormDLabel htmlFor="desc">내용</StFormDLabel>
+            <StFormDInput
+              type="text"
+              defaultValue={targetData.description}
+              ref={descriptionRef}
+              id="desc"
+            />
+          </StFormDBox>
+          <StButtonDiv>
+            <StBtn type="submit" $text="update">
+              수정
+            </StBtn>
+            <StBtn
+              type="button"
+              $text="delete"
+              onClick={() => handleDeleteData(params.id)}
+            >
+              삭제
+            </StBtn>
+            <StBtn type="button" $text="gohome" onClick={() => navigate('/')}>
+              뒤로가기
+            </StBtn>
+          </StButtonDiv>
+        </StDetailForm>  
+        }
       </StDetailWrapper>
     </div>
   );
