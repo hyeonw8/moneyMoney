@@ -77,8 +77,6 @@ const Detail = () => {
   const costRef = useRef(null);
   const descriptionRef = useRef(null);
 
-  // const filterTargetData = data.filter((item) => item.id === params.id);
-  // console.log(filterTargetData)
   const targetData = data.find((item) => item.id === params.id );
   console.log(targetData)
 
@@ -112,7 +110,6 @@ const Detail = () => {
     <div>
       <StDetailWrapper>
         <StDetailTitle>상세 내역 페이지</StDetailTitle>
-        {
           <StDetailForm
           onSubmit={() => handleUpdateData(params.id)}
         >
@@ -168,7 +165,6 @@ const Detail = () => {
             </StBtn>
           </StButtonDiv>
         </StDetailForm>  
-        }
       </StDetailWrapper>
     </div>
   );
