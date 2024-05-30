@@ -85,7 +85,7 @@ const Detail = () => {
 
       dispatch(deleteData(id));
 
-      navigate('/'); // 저장 후 다시 홈으로
+      navigate(-1);
     } 
   };
 
@@ -102,7 +102,7 @@ const Detail = () => {
 
     dispatch(updateData({ id, updatedItem }));
 
-    navigate('/');
+    navigate(-1);
   };
 
   return (
