@@ -22,11 +22,19 @@ const datasSlice = createSlice({
     },
     deleteData: (state, action) => {
       const id = action.payload;
-      state.data = state.data.filter(item => item.id !== id);
+      const idx = state.data.findIndex(item => item.id === id);
+
+      if (idx !== -1) {
+        state.data.splice(idx, 1); // mutabble way
+      }
     },
     updateData: (state, action) => {
       const { id, updatedItem } = action.payload;
-      state.data = state.data.map((item) => (item.id === id ? updatedItem : item))
+      const idx = state.data.findIndex(item => item.id === id);
+
+      if( idx !== -1 ) {
+        state.data[idx] = updatedItem; // mutabble way
+      }
     }
   }
 })
